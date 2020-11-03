@@ -10,5 +10,6 @@ namespace BookListRazorWebApp.Model
         public string Name { get; set; }
         [Required]
         public string Author { get; set; }
+        public string ISBN{ get; set; }
     }
 }
