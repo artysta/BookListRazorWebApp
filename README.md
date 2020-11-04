@@ -36,5 +36,7 @@ Now you can create database:
 ### #2. Add new Book properties & update database.
 If you want to describe books using more data (e.g. number of pages) you can just add new poperty to the Book (Book.cs file) model.
 After you add new property, add new migration and update database:
+
 `add-migration AddNumberOfPagesToBook`
+
 `update-database`
