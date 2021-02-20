@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BookListMVCApp.Models.Book> 
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2  class="text-primary">Book List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Book" asp-action="Create" class="btn btn-primary">Create New Book</a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Book name
+                    </th>
+                    <th>
+                        Number of pages
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                <tr>
+                    <td width="40%">@obj.Name</td>
+                    <td width="40%">@obj.NumberOfPages</td>
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Book" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary" class="mx-2">
+                                Edit
+                            </a>
+                            <a asp-controller="Book" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger" class="mx-2">
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    } else {
+        <p>There are no books in the database!</p>
+    }
+
+</div>
