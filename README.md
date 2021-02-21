@@ -1,23 +1,5 @@
-# BookListMVCApp
+# SimpleASP.NETCoreAndRazorPagesApps
 
-## # Instruction
+This repository containst pretty simple CRUD web appliactions made while learning basics of **ASP.NET Core**, **Razor Pages** and **Entity Framework Core**.
 
-To run this app...
-
- - clone repo:
-
-        git clone https://github.com/artysta/BookListRazorWebApp.git
-        
- - go to the project directory:
-
-        cd BookListRazorWebApp
-
- - create database:
-
-        dotnet ef update-database --project ./BookListMVCApp/BookListMVCApp.csproj
- 
- - run app:
-
-        dotnet run --project ./BookListMVCApp/BookListMVCApp.csproj
-
-...or just use Visual Studio, but remember to type `update-database` in NuGet Package Manager console to create database.
+Apps allows to add books to the database and also read, update and remove thSese.
