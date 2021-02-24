@@ -23,6 +23,9 @@
                     <th>
                         Number of pages
                     </th>
+                    <th>
+                        Category
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +33,8 @@
                 {
                 <tr>
                     <td width="40%">@obj.Name</td>
-                    <td width="40%">@obj.NumberOfPages</td>
+                    <td width="20%">@obj.NumberOfPages</td>
+                    <td width="20%">@obj.Category.Name</td>
                     <td class="text-center">
                         <div class="w-75 btn-group" role="group">
                             <a asp-controller="Book" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary" class="mx-2">

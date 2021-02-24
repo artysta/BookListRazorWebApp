@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using BookListMVCApp.Data;
 using BookListMVCApp.Models;
+using BookListMVCApp.Models.ViewModels;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookListMVCApp.Controllers
 {
@@ -16,24 +20,37 @@ namespace BookListMVCApp.Controllers
 		
 		public IActionResult Index()
 		{
-			IEnumerable<Book> objList = _db.Book;
-			return View(objList);
+			IQueryable<Book> books = _db.Book;
+
+			books = books.Include("Category");
+
+			return View(books);
 		}
 
 		// GET for Create
 		public IActionResult Create()
-		{	
-			return View();
+		{
+			BookViewModel bookViewModel = new BookViewModel()
+			{
+				Book = new Book(),
+				CategoryList = _db.Category.Select(i => new SelectListItem
+				{
+					Text = i.Name,
+					Value = i.Id.ToString()
+				}),
+			};
+
+			return View(bookViewModel);
 		}
 
 		// Post for Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Create(Book obj)
+		public IActionResult Create(BookViewModel obj)
 		{
 			if (ModelState.IsValid)
 			{
-				_db.Book.Add(obj);
+				_db.Book.Add(obj.Book);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
 			}

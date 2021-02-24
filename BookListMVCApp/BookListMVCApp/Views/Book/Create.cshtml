@@ -1,4 +1,4 @@
-﻿@model BookListMVCApp.Models.Book
+﻿@model BookListMVCApp.Models.ViewModels.BookViewModel
   
 @{
     ViewData["Title"] = "Create";
@@ -15,18 +15,25 @@
             <div class="col-8">
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Name"></label>
+                        <label asp-for="Book.Name"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input asp-for="Book.Name" class="form-control" />
+                        <span asp-validation-for="Book.Name" class="text-danger"></span>
                     </div>
                     <div class="col-4">
-                        <label asp-for="NumberOfPages"></label>
+                        <label asp-for="Book.NumberOfPages"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="NumberOfPages" class="form-control" />
-                        <span asp-validation-for="NumberOfPages" class="text-danger"></span>
+                        <input asp-for="Book.NumberOfPages" class="form-control" />
+                        <span asp-validation-for="Book.NumberOfPages" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Book.Category" ></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.Book.CategoryId, Model.CategoryList, "> Select book category <", new { @class = "form-control" })
+                        <span asp-validation-for="Book.CategoryId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
